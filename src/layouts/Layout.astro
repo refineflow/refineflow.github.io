@@ -1,23 +1,119 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title = "Your Company", description = "アプリ・システムのマネジメント・開発・支援" } = Astro.props;
+---
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+<html lang="ja" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+      :root {
+        --bg: #ebebeb;
+        --bg-card: #f4f4f4;
+        --fg: #111110;
+        --fg-2: #666662;
+        --fg-3: #aaa;
+        --border: #d8d8d4;
+        --accent: #2a7fff;
+        --font-display: 'Syne', sans-serif;
+        --font-body: 'Noto Sans JP', sans-serif;
+      }
+      [data-theme="dark"] {
+        --bg: #111110;
+        --bg-card: #1c1c1a;
+        --fg: #e8e6df;
+        --fg-2: #888880;
+        --fg-3: #555550;
+        --border: #2a2a26;
+        --accent: #5a9fff;
+      }
+
+      html { scroll-behavior: smooth; }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: var(--font-body);
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 1.8;
+        -webkit-font-smoothing: antialiased;
+        transition: background 0.3s, color 0.3s;
+      }
+      ::selection { background: var(--accent); color: #fff; }
+      a { color: inherit; text-decoration: none; }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
+    <script is:inline>
+      // テーマを即座に適用（チラつき防止）
+      const saved = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', saved);
+    </script>
+  </head>
+  <body>
+    <slot />
+    <script>
+      // スクロールフェードイン
+      const els = document.querySelectorAll('.reveal');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => {
+          if (e.isIntersecting) {
+            setTimeout(() => e.target.classList.add('visible'), i * 60);
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(el => io.observe(el));
+
+      // テーマ切り替え
+      const themeBtn = document.getElementById('theme-toggle');
+      const updateThemeBtn = () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (themeBtn) themeBtn.textContent = isDark ? '☀' : '☾';
+      };
+      updateThemeBtn();
+      themeBtn?.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const next = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateThemeBtn();
+      });
+
+      // 言語切り替え
+      let currentLang = localStorage.getItem('lang') || 'ja';
+      const langBtn = document.getElementById('lang-toggle');
+      const applyLang = (lang: string) => {
+        document.querySelectorAll('[data-ja]').forEach(el => {
+          (el as HTMLElement).textContent = lang === 'ja'
+            ? (el as HTMLElement).dataset.ja!
+            : (el as HTMLElement).dataset.en!;
+        });
+        if (langBtn) langBtn.textContent = lang === 'ja' ? 'EN' : 'JA';
+        document.documentElement.lang = lang === 'ja' ? 'ja' : 'en';
+        localStorage.setItem('lang', lang);
+        currentLang = lang;
+      };
+      applyLang(currentLang);
+      langBtn?.addEventListener('click', () => {
+        applyLang(currentLang === 'ja' ? 'en' : 'ja');
+      });
+    </script>
+  </body>
+</html>
