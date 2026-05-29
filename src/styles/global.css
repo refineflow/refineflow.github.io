@@ -116,20 +116,34 @@
   to   { transform: translateX(400%); }
 }
 
-/* ── Organic blob float — more dramatic movement ── */
+/* ── Organic blob float — slow flame, subtle flicker ── */
 @keyframes blobFloat1 {
-  0%, 100% { border-radius: 58% 42% 55% 45% / 48% 52% 48% 52%; transform: translate(-50%, -50%) scale(1)    rotate(0deg); }
-  15%       { border-radius: 38% 62% 68% 32% / 64% 36% 64% 36%; transform: translate(-50%, -50%) scale(1.28) rotate(18deg); }
-  35%       { border-radius: 74% 26% 34% 66% / 38% 68% 32% 62%; transform: translate(-50%, -50%) scale(0.78) rotate(34deg); }
-  55%       { border-radius: 26% 74% 72% 28% / 62% 36% 64% 38%; transform: translate(-50%, -50%) scale(1.22) rotate(24deg); }
-  75%       { border-radius: 56% 44% 28% 72% / 70% 56% 44% 30%; transform: translate(-50%, -50%) scale(0.86) rotate(10deg); }
+  0%   { border-radius: 58% 42% 55% 45% / 48% 52% 48% 52%; transform: translate(-50%,-50%) scale(1)    rotate(0deg);  opacity: 0.78; }
+  12%  { border-radius: 36% 64% 70% 30% / 68% 32% 66% 34%; transform: translate(-50%,-50%) scale(1.22) rotate(16deg); opacity: 0.92; }
+  26%  { border-radius: 72% 28% 34% 66% / 36% 70% 30% 64%; transform: translate(-50%,-50%) scale(0.82) rotate(28deg); opacity: 0.62; }
+  42%  { border-radius: 42% 58% 62% 38% / 60% 40% 56% 44%; transform: translate(-50%,-50%) scale(1.18) rotate(22deg); opacity: 0.88; }
+  56%  { border-radius: 28% 72% 70% 30% / 64% 36% 66% 34%; transform: translate(-50%,-50%) scale(0.86) rotate(12deg); opacity: 0.68; }
+  70%  { border-radius: 62% 38% 28% 72% / 72% 58% 42% 28%; transform: translate(-50%,-50%) scale(1.14) rotate(8deg);  opacity: 0.85; }
+  85%  { border-radius: 46% 54% 58% 42% / 44% 56% 46% 54%; transform: translate(-50%,-50%) scale(0.92) rotate(4deg);  opacity: 0.72; }
+  100% { border-radius: 58% 42% 55% 45% / 48% 52% 48% 52%; transform: translate(-50%,-50%) scale(1)    rotate(0deg);  opacity: 0.78; }
 }
 
 @keyframes blobFloat2 {
-  0%, 100% { border-radius: 44% 56% 66% 34% / 54% 60% 40% 46%; transform: translate(-50%, -50%) scale(1)    rotate(0deg);   }
-  20%       { border-radius: 68% 32% 30% 70% / 30% 62% 70% 38%; transform: translate(-50%, -50%) scale(1.32) rotate(-24deg); }
-  45%       { border-radius: 30% 70% 62% 38% / 66% 30% 60% 40%; transform: translate(-50%, -50%) scale(0.74) rotate(-46deg); }
-  70%       { border-radius: 60% 40% 40% 60% / 38% 70% 34% 66%; transform: translate(-50%, -50%) scale(1.18) rotate(-28deg); }
+  0%   { border-radius: 44% 56% 66% 34% / 54% 60% 40% 46%; transform: translate(-50%,-50%) scale(1)    rotate(0deg);   opacity: 0.65; }
+  20%  { border-radius: 68% 32% 30% 70% / 30% 64% 70% 36%; transform: translate(-50%,-50%) scale(1.26) rotate(-22deg); opacity: 0.85; }
+  40%  { border-radius: 30% 70% 64% 36% / 68% 30% 60% 40%; transform: translate(-50%,-50%) scale(0.78) rotate(-40deg); opacity: 0.55; }
+  58%  { border-radius: 56% 44% 42% 58% / 38% 68% 34% 66%; transform: translate(-50%,-50%) scale(1.20) rotate(-28deg); opacity: 0.82; }
+  76%  { border-radius: 36% 64% 72% 28% / 62% 36% 64% 38%; transform: translate(-50%,-50%) scale(0.84) rotate(-14deg); opacity: 0.60; }
+  100% { border-radius: 44% 56% 66% 34% / 54% 60% 40% 46%; transform: translate(-50%,-50%) scale(1)    rotate(0deg);   opacity: 0.65; }
+}
+
+@keyframes blobFloat3 {
+  0%   { border-radius: 52% 48% 60% 40% / 50% 58% 42% 50%; transform: translate(-50%,-50%) scale(1)    rotate(0deg);  opacity: 0.55; }
+  18%  { border-radius: 72% 28% 40% 60% / 62% 38% 68% 32%; transform: translate(-50%,-50%) scale(1.30) rotate(28deg); opacity: 0.82; }
+  38%  { border-radius: 28% 72% 72% 28% / 32% 68% 28% 72%; transform: translate(-50%,-50%) scale(0.74) rotate(50deg); opacity: 0.45; }
+  58%  { border-radius: 66% 34% 32% 68% / 70% 30% 62% 38%; transform: translate(-50%,-50%) scale(1.22) rotate(36deg); opacity: 0.75; }
+  78%  { border-radius: 34% 66% 68% 32% / 42% 58% 40% 60%; transform: translate(-50%,-50%) scale(0.80) rotate(18deg); opacity: 0.50; }
+  100% { border-radius: 52% 48% 60% 40% / 50% 58% 42% 50%; transform: translate(-50%,-50%) scale(1)    rotate(0deg);  opacity: 0.55; }
 }
 
 /* ── Section title ripple ── */

@@ -71,35 +71,50 @@ import Layout from '../layouts/Layout.astro';
       linear-gradient(90deg, rgba(79, 70, 229, 0.055) 1px, transparent 1px);
   }
 
-  /* ── Organic blobs — stronger, more visible ── */
+  /* ── Organic blobs — slow flame, moderate intensity ── */
   .hero-blob { position: absolute; pointer-events: none; will-change: transform; }
   .hero-blob-1 {
-    width: 600px; height: 520px;
-    background: radial-gradient(ellipse at center,
-      rgba(99, 102, 241, 0.38) 0%,
-      rgba(139, 92, 246, 0.20) 40%,
-      transparent 68%);
+    width: 660px; height: 560px;
+    background: radial-gradient(ellipse at 50% 44%,
+      rgba(99, 102, 241, 0.48) 0%,
+      rgba(139, 92, 246, 0.24) 36%,
+      rgba(99, 102, 241, 0.08) 60%,
+      transparent 72%);
     top: 50%; left: 50%;
-    filter: blur(42px);
-    animation: blobFloat1 16s ease-in-out infinite;
+    filter: blur(36px);
+    animation: blobFloat1 18s ease-in-out infinite;
   }
   .hero-blob-2 {
-    width: 420px; height: 370px;
-    background: radial-gradient(ellipse at center,
-      rgba(167, 139, 250, 0.28) 0%,
-      rgba(99, 102, 241, 0.12) 48%,
+    width: 480px; height: 420px;
+    background: radial-gradient(ellipse at 50% 40%,
+      rgba(167, 139, 250, 0.40) 0%,
+      rgba(99, 102, 241, 0.18) 44%,
+      transparent 68%);
+    top: 44%; left: 54%;
+    filter: blur(50px);
+    animation: blobFloat2 24s ease-in-out infinite;
+  }
+  .hero-blob-3 {
+    width: 320px; height: 280px;
+    background: radial-gradient(ellipse at 50% 50%,
+      rgba(129, 140, 248, 0.42) 0%,
+      rgba(167, 139, 250, 0.18) 48%,
       transparent 70%);
-    top: 44%; left: 53%;
-    filter: blur(58px);
-    animation: blobFloat2 22s ease-in-out infinite;
+    top: 56%; left: 46%;
+    filter: blur(30px);
+    animation: blobFloat3 11s ease-in-out infinite;
   }
   [data-theme="light"] .hero-blob-1 {
-    background: radial-gradient(ellipse at center,
-      rgba(79, 70, 229, 0.22) 0%, rgba(109, 100, 249, 0.10) 40%, transparent 68%);
+    background: radial-gradient(ellipse at 50% 44%,
+      rgba(79, 70, 229, 0.26) 0%, rgba(109, 100, 249, 0.12) 40%, transparent 68%);
   }
   [data-theme="light"] .hero-blob-2 {
-    background: radial-gradient(ellipse at center,
-      rgba(129, 120, 249, 0.16) 0%, rgba(79, 70, 229, 0.07) 48%, transparent 70%);
+    background: radial-gradient(ellipse at 50% 40%,
+      rgba(129, 120, 249, 0.20) 0%, rgba(79, 70, 229, 0.08) 48%, transparent 70%);
+  }
+  [data-theme="light"] .hero-blob-3 {
+    background: radial-gradient(ellipse at 50% 50%,
+      rgba(99, 90, 239, 0.18) 0%, rgba(139, 130, 249, 0.08) 48%, transparent 70%);
   }
 
   .hero-inner { position: relative; z-index: 1; max-width: 820px; }
@@ -450,6 +465,7 @@ import Layout from '../layouts/Layout.astro';
 <section id="hero">
   <div class="hero-blob hero-blob-1"></div>
   <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
 
   <div class="hero-inner">
     <p class="hero-eyebrow fade-in" style="animation-delay: 0.1s">App &amp; System Studio</p>
