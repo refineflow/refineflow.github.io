@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="KN.dev — 想いを、動くものに。" description="アプリ・システムの企画・開発・支援を行う個人事業です。">
+<Layout title="Flowfine Works — 想いを、動くものに。" description="アプリ・システムの企画・開発・支援を行う個人事業です。">
 <style>
   /* ━━ Nav ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   #nav {
@@ -24,8 +24,8 @@ import Layout from '../layouts/Layout.astro';
     font-family: var(--font-mono); font-size: 15px; letter-spacing: -0.01em;
     display: flex; align-items: center; gap: 2px;
     background: linear-gradient(90deg,
-      #6366f1 0%, #818cf8 18%, #a78bfa 35%, #c4b5fd 50%,
-      #a78bfa 65%, #818cf8 82%, #6366f1 100%);
+      #3b82f6 0%, #60a5fa 18%, #93c5fd 35%, #bfdbfe 50%,
+      #93c5fd 65%, #60a5fa 82%, #3b82f6 100%);
     background-size: 280% 100%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -58,8 +58,8 @@ import Layout from '../layouts/Layout.astro';
   #hero::before {
     content: ''; position: absolute; inset: 0;
     background-image:
-      linear-gradient(rgba(99, 102, 241, 0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(99, 102, 241, 0.045) 1px, transparent 1px);
+      linear-gradient(rgba(59, 130, 246, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.045) 1px, transparent 1px);
     background-size: 64px 64px;
     mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 80%);
     -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 80%);
@@ -67,8 +67,8 @@ import Layout from '../layouts/Layout.astro';
   }
   [data-theme="light"] #hero::before {
     background-image:
-      linear-gradient(rgba(79, 70, 229, 0.055) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(79, 70, 229, 0.055) 1px, transparent 1px);
+      linear-gradient(rgba(37, 99, 235, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(37, 99, 235, 0.055) 1px, transparent 1px);
   }
 
   /* ── Organic blobs — slow flame, moderate intensity ── */
@@ -76,9 +76,9 @@ import Layout from '../layouts/Layout.astro';
   .hero-blob-1 {
     width: 660px; height: 560px;
     background: radial-gradient(ellipse at 50% 44%,
-      rgba(99, 102, 241, 0.48) 0%,
-      rgba(139, 92, 246, 0.24) 36%,
-      rgba(99, 102, 241, 0.08) 60%,
+      rgba(59, 130, 246, 0.48) 0%,
+      rgba(37, 99, 235, 0.24) 36%,
+      rgba(59, 130, 246, 0.08) 60%,
       transparent 72%);
     top: 50%; left: 50%;
     filter: blur(36px);
@@ -87,8 +87,8 @@ import Layout from '../layouts/Layout.astro';
   .hero-blob-2 {
     width: 480px; height: 420px;
     background: radial-gradient(ellipse at 50% 40%,
-      rgba(167, 139, 250, 0.40) 0%,
-      rgba(99, 102, 241, 0.18) 44%,
+      rgba(96, 165, 250, 0.40) 0%,
+      rgba(59, 130, 246, 0.18) 44%,
       transparent 68%);
     top: 44%; left: 54%;
     filter: blur(50px);
@@ -97,8 +97,8 @@ import Layout from '../layouts/Layout.astro';
   .hero-blob-3 {
     width: 320px; height: 280px;
     background: radial-gradient(ellipse at 50% 50%,
-      rgba(129, 140, 248, 0.42) 0%,
-      rgba(167, 139, 250, 0.18) 48%,
+      rgba(59, 130, 246, 0.42) 0%,
+      rgba(96, 165, 250, 0.18) 48%,
       transparent 70%);
     top: 56%; left: 46%;
     filter: blur(30px);
@@ -106,15 +106,15 @@ import Layout from '../layouts/Layout.astro';
   }
   [data-theme="light"] .hero-blob-1 {
     background: radial-gradient(ellipse at 50% 44%,
-      rgba(79, 70, 229, 0.26) 0%, rgba(109, 100, 249, 0.12) 40%, transparent 68%);
+      rgba(37, 99, 235, 0.26) 0%, rgba(59, 130, 246, 0.12) 40%, transparent 68%);
   }
   [data-theme="light"] .hero-blob-2 {
     background: radial-gradient(ellipse at 50% 40%,
-      rgba(129, 120, 249, 0.20) 0%, rgba(79, 70, 229, 0.08) 48%, transparent 70%);
+      rgba(96, 165, 250, 0.20) 0%, rgba(37, 99, 235, 0.08) 48%, transparent 70%);
   }
   [data-theme="light"] .hero-blob-3 {
     background: radial-gradient(ellipse at 50% 50%,
-      rgba(99, 90, 239, 0.18) 0%, rgba(139, 130, 249, 0.08) 48%, transparent 70%);
+      rgba(59, 130, 246, 0.18) 0%, rgba(96, 165, 250, 0.08) 48%, transparent 70%);
   }
 
   .hero-inner { position: relative; z-index: 1; max-width: 820px; }
@@ -404,7 +404,7 @@ import Layout from '../layouts/Layout.astro';
   }
   .footer-logo {
     font-family: var(--font-mono); font-size: 13px;
-    background: linear-gradient(90deg, #6366f1 0%, #818cf8 50%, #6366f1 100%);
+    background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 50%, #3b82f6 100%);
     background-size: 200% 100%;
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent; color: transparent;
@@ -423,7 +423,7 @@ import Layout from '../layouts/Layout.astro';
 
 <!-- ── Navigation ── -->
 <nav id="nav">
-  <a href="/" class="nav-logo">KN.dev</a>
+  <a href="/" class="nav-logo">Flowfine Works</a>
 
   <div class="nav-right">
     <ul class="nav-links">
@@ -494,7 +494,7 @@ import Layout from '../layouts/Layout.astro';
     </p>
 
     <p class="hero-sub fade-in" style="animation-delay: 2.35s">
-      <span class="t-ja">アイデアの言語化から設計・開発・リリースまで、<br/>プロダクトのライフサイクル全体に伴走します。</span>
+      <span class="t-ja">アイデアの言語化から実装まで、体験の流れを整えながら、<br/>自然に届くプロダクトをつくります。</span>
       <span class="t-en">From ideation to design, development, and launch —<br/>we walk beside you through every stage.</span>
     </p>
 
@@ -535,16 +535,16 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="about-cards">
         <div class="about-card reveal" data-delay="0.15">
+          <p class="about-card-label"><span class="t-ja">事業者名</span><span class="t-en">Business Name</span></p>
+          <p class="about-card-value"><strong>Flowfine Works</strong></p>
+        </div>
+        <div class="about-card reveal" data-delay="0.25">
           <p class="about-card-label"><span class="t-ja">事業形態</span><span class="t-en">Business Type</span></p>
           <p class="about-card-value"><span class="t-ja"><strong>個人事業主</strong></span><span class="t-en"><strong>Sole Proprietor</strong></span></p>
         </div>
-        <div class="about-card reveal" data-delay="0.25">
+        <div class="about-card reveal" data-delay="0.35">
           <p class="about-card-label"><span class="t-ja">専門領域</span><span class="t-en">Expertise</span></p>
           <p class="about-card-value"><span class="t-ja">スマホアプリ・Webシステム・業務ツール</span><span class="t-en">Mobile Apps · Web Systems · Internal Tools</span></p>
-        </div>
-        <div class="about-card reveal" data-delay="0.35">
-          <p class="about-card-label"><span class="t-ja">対応フェーズ</span><span class="t-en">Covered Phases</span></p>
-          <p class="about-card-value"><span class="t-ja">企画 / 要件定義 / 設計 / 開発 / 保守</span><span class="t-en">Concept / Spec / Design / Dev / Maintenance</span></p>
         </div>
       </div>
     </div>
@@ -721,7 +721,7 @@ import Layout from '../layouts/Layout.astro';
 
     <div class="contact-cards reveal" data-delay="0.1">
       <!-- Email -->
-      <a href="mailto:info@example.com" class="contact-card">
+      <a href="mailto:contact@flowfine.dev" class="contact-card">
         <div class="contact-card-icon" aria-hidden="true">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -730,11 +730,11 @@ import Layout from '../layouts/Layout.astro';
           </svg>
         </div>
         <p class="contact-card-label">Email</p>
-        <p class="contact-card-val">info@example.com</p>
+        <p class="contact-card-val">contact@flowfine.dev</p>
       </a>
 
       <!-- Website -->
-      <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="contact-card">
+      <a href="https://flowfine.dev" target="_blank" rel="noopener noreferrer" class="contact-card">
         <div class="contact-card-icon" aria-hidden="true">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -744,7 +744,7 @@ import Layout from '../layouts/Layout.astro';
           </svg>
         </div>
         <p class="contact-card-label">Website</p>
-        <p class="contact-card-val">example.com</p>
+        <p class="contact-card-val">flowfine.dev</p>
       </a>
 
       <!-- Location → legal notice link -->
@@ -768,8 +768,8 @@ import Layout from '../layouts/Layout.astro';
 
 <!-- ── Footer ── -->
 <footer id="footer">
-  <span class="footer-logo">KN.dev</span>
-  <span class="footer-copy">&copy; 2025 KN.dev</span>
+  <span class="footer-logo">Flowfine Works</span>
+  <span class="footer-copy">&copy; 2026 Flowfine Works All rights reserved.</span>
   <span class="footer-legal">
     <a href="/legal">
       <span class="t-ja">特定商取引法に基づく表記</span>
