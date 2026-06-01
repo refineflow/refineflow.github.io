@@ -190,81 +190,107 @@ import Layout from '../layouts/Layout.astro';
     </svg>
     <span class="nav-logo-text">Flowfine Works</span>
   </a>
+  <button id="lang-toggle" class="lang-toggle" aria-label="言語切り替え / Language">
+    <span class="lt-ja">JP</span>
+    <span class="lt-sep">/</span>
+    <span class="lt-en">EN</span>
+  </button>
 </nav>
 
 <!-- Main content -->
 <main>
   <header class="page-header reveal">
     <span class="page-eyebrow">Legal</span>
-    <h1 class="page-title">特定商取引法に基づく表記</h1>
+    <h1 class="page-title">
+      <span class="t-ja">特定商取引法に基づく表記</span>
+      <span class="t-en">Legal Notice</span>
+    </h1>
     <p class="page-subtitle">Specified Commercial Transactions Act</p>
   </header>
 
   <table class="legal-table">
     <tbody>
       <tr class="reveal" data-delay="0.05">
-        <th>販売事業者</th>
+        <th><span class="t-ja">販売事業者</span><span class="t-en">Seller</span></th>
         <td>Flowfine Works</td>
       </tr>
       <tr class="reveal" data-delay="0.1">
-        <th>代表者</th>
-        <td>請求があった場合、遅滞なく開示いたします</td>
+        <th><span class="t-ja">代表者</span><span class="t-en">Representative</span></th>
+        <td>
+          <span class="t-ja">請求があった場合、遅滞なく開示いたします</span>
+          <span class="t-en">Will be disclosed promptly upon request</span>
+        </td>
       </tr>
       <tr class="reveal" data-delay="0.15">
-        <th>所在地</th>
+        <th><span class="t-ja">所在地</span><span class="t-en">Address</span></th>
         <td>〒107-0061<br/>東京都港区北青山1-3-3 三橋ビル 3階</td>
       </tr>
       <tr class="reveal" data-delay="0.2">
-        <th>電話番号</th>
-        <td>請求があった場合、遅滞なく開示いたします</td>
+        <th><span class="t-ja">電話番号</span><span class="t-en">Phone</span></th>
+        <td>
+          <span class="t-ja">請求があった場合、遅滞なく開示いたします</span>
+          <span class="t-en">Will be disclosed promptly upon request</span>
+        </td>
       </tr>
       <tr class="reveal" data-delay="0.25">
-        <th>メールアドレス</th>
+        <th><span class="t-ja">メールアドレス</span><span class="t-en">Email</span></th>
         <td><a href="mailto:contact@flowfine.dev">contact@flowfine.dev</a></td>
       </tr>
       <tr class="reveal" data-delay="0.3">
-        <th>販売価格</th>
-        <td>各サービス・プロダクトのページに記載、または個別見積による</td>
+        <th><span class="t-ja">販売価格</span><span class="t-en">Pricing</span></th>
+        <td>
+          <span class="t-ja">各サービス・プロダクトのページに記載、または個別見積による</span>
+          <span class="t-en">Listed on each service/product page, or by individual quote</span>
+        </td>
       </tr>
       <tr class="reveal" data-delay="0.35">
-        <th>支払方法</th>
-        <td>銀行振込、各種プラットフォーム（App Store / Google Play）の決済に準拠</td>
+        <th><span class="t-ja">支払方法</span><span class="t-en">Payment Method</span></th>
+        <td>
+          <span class="t-ja">銀行振込、各種プラットフォーム（App Store / Google Play）の決済に準拠</span>
+          <span class="t-en">Bank transfer, or in accordance with platform payment methods (App Store / Google Play)</span>
+        </td>
       </tr>
       <tr class="reveal" data-delay="0.4">
-        <th>支払時期</th>
-        <td>請求書発行日から30日以内、またはプラットフォームの規約に準拠</td>
+        <th><span class="t-ja">支払時期</span><span class="t-en">Payment Terms</span></th>
+        <td>
+          <span class="t-ja">請求書発行日から30日以内、またはプラットフォームの規約に準拠</span>
+          <span class="t-en">Within 30 days of invoice date, or in accordance with platform terms</span>
+        </td>
       </tr>
       <tr class="reveal" data-delay="0.45">
-        <th>商品の引渡時期</th>
+        <th><span class="t-ja">商品の引渡時期</span><span class="t-en">Delivery</span></th>
         <td>
-          受託開発：契約締結後、別途協議の上定める期日<br/>
-          アプリ・デジタル商品：購入手続き完了後、ただちに提供
+          <span class="t-ja">受託開発：契約締結後、別途協議の上定める期日<br/>アプリ・デジタル商品：購入手続き完了後、ただちに提供</span>
+          <span class="t-en">Contract dev: By the date agreed upon after contract signing<br/>App / digital products: Provided immediately upon purchase</span>
         </td>
       </tr>
       <tr class="reveal" data-delay="0.5">
-        <th>返品・キャンセル</th>
+        <th><span class="t-ja">返品・キャンセル</span><span class="t-en">Returns & Cancellations</span></th>
         <td>
-          受託開発：業務着手前であればキャンセル可能。着手後は別途協議。<br/>
-          デジタル商品：各プラットフォームの規約に準拠
+          <span class="t-ja">受託開発：業務着手前であればキャンセル可能。着手後は別途協議。<br/>デジタル商品：各プラットフォームの規約に準拠</span>
+          <span class="t-en">Contract dev: Cancellable before work begins. After commencement, subject to negotiation.<br/>Digital products: Subject to platform terms</span>
         </td>
       </tr>
       <tr class="reveal" data-delay="0.55">
-        <th>動作環境</th>
-        <td>各アプリ・サービスのページに記載</td>
+        <th><span class="t-ja">動作環境</span><span class="t-en">System Requirements</span></th>
+        <td>
+          <span class="t-ja">各アプリ・サービスのページに記載</span>
+          <span class="t-en">Listed on each app/service page</span>
+        </td>
       </tr>
       <tr class="reveal" data-delay="0.6">
-        <th>その他</th>
+        <th><span class="t-ja">その他</span><span class="t-en">Other</span></th>
         <td>
-          価格はすべて税込表示です。<br/>
-          詳細はご契約時の個別合意書に準拠します。
+          <span class="t-ja">価格はすべて税込表示です。<br/>詳細はご契約時の個別合意書に準拠します。</span>
+          <span class="t-en">All prices include tax.<br/>Details are subject to the individual agreement at the time of contract.</span>
         </td>
       </tr>
     </tbody>
   </table>
 
   <div class="legal-note reveal" data-delay="0.65">
-    本ページに記載の内容は予告なく変更する場合があります。<br/>
-    ご不明な点がございましたら <a href="mailto:contact@flowfine.dev">contact@flowfine.dev</a> までお問い合わせください。
+    <span class="t-ja">本ページに記載の内容は予告なく変更する場合があります。<br/>ご不明な点がございましたら <a href="mailto:contact@flowfine.dev">contact@flowfine.dev</a> までお問い合わせください。</span>
+    <span class="t-en">The contents of this page are subject to change without notice.<br/>For inquiries, please contact <a href="mailto:contact@flowfine.dev">contact@flowfine.dev</a>.</span>
   </div>
 </main>
 
