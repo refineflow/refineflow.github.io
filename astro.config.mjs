@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://flowfine.github.io',
+  site: 'https://refineflow.github.io',
   vite: {
     plugins: [tailwindcss()]
   }
