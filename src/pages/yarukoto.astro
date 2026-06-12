@@ -1,0 +1,287 @@
+---
+/*
+  「やること」LP — Astro page  (refineflow.github.io 用)
+  --------------------------------------------------------------
+  設置:  このファイルを src/pages/yarukoto.astro に置く → /yarukoto で表示
+          （サイト直下にしたいなら index.astro にリネーム）
+  アセット:  public/yarukoto/ をリポジトリの public/yarukoto/ にコピー
+          (icon/top/limit/edit/complete .png, styles.css, script.js)
+
+  ・このページは自己完結型（独自の <head> を持つ）です。既存の Layout.astro や
+    Tailwind の global.css には依存せず、干渉もしません。
+  ・テーマは既存サイトと同じ localStorage キー "theme" を共有し、<html data-theme>
+    を見て切り替わります。サイトのどこかでダーク/ライトを選ぶと、このLPにも反映されます。
+  ・GitHub Pages のルート配信(base 未設定)に合わせ、パスは BASE_URL 経由で解決します。
+
+  ※ 既存 Layout（共通ヘッダー/フォント/言語切替）に揃えたい場合は、<body> の中身を
+     <Layout> でラップする「Layout統合版」も作れます（要相談）。
+*/
+const base = import.meta.env.BASE_URL;        // refineflow.github.io では "/"
+const a = (f) => `${base}yarukoto/${f}`;
+---
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>やること — シンプルなTODOアプリ｜RefineFlow Works</title>
+<meta name="description" content="必要な機能だけを残した、心地よいTODOアプリ「やること」。やるべきことをシンプルに整理し、迷いを減らし、自然に次の一歩へ。日常の流れを整えます。">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d1829" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="やること — シンプルなTODOアプリ">
+<meta property="og:description" content="必要な機能だけを残した、心地よいTODOアプリ。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href={a('styles.css')} />
+<script is:inline>
+  // Set theme before first paint to avoid flash.
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="#top" aria-label="やること ホーム">
+      <img src={a('icon.png')} alt="">
+      <span>やること</span>
+    </a>
+    <div class="nav__right">
+      <button class="theme-switch" id="themeToggle" type="button" role="switch" aria-label="ライト・ダークモードを切り替える">
+        <span class="theme-switch__track">
+          <svg class="theme-switch__ghost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
+          <svg class="theme-switch__ghost" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.8 6.8 0 0 0 9.8 9.8z"/></svg>
+          <span class="theme-switch__knob">
+            <svg class="ksun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
+            <svg class="kmoon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.8 6.8 0 0 0 9.8 9.8z"/></svg>
+          </span>
+        </span>
+      </button>
+      <a class="appstore appstore--sm" href="#cta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.89-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.88 2.65 3.22 2.6 1.29-.05 1.78-.83 3.34-.83 1.55 0 2 .83 3.37.81 1.39-.03 2.27-1.27 3.12-2.53.98-1.45 1.39-2.85 1.41-2.93-.03-.01-2.7-1.04-2.73-4.13zM14.6 4.62c.71-.86 1.19-2.06 1.06-3.25-1.02.04-2.26.68-2.99 1.54-.66.76-1.23 1.98-1.08 3.15 1.14.09 2.3-.58 3.01-1.44z"/></svg>
+        <span class="as-txt"><span class="as-big">App Store</span></span>
+      </a>
+      <a class="appstore appstore--sm appstore--alt" href="#cta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.3 2.6a1 1 0 0 0-.5.9v17a1 1 0 0 0 .5.9l9.2-9.4L4.3 2.6zm10.3 8.1 2.9-3-9.1-5.2 6.2 8.2zm0 2.6-6.2 8.2 9.1-5.2-2.9-3zm1.4-1.3 2.9-1.7c.7-.4.7-1.4 0-1.8l-2.9-1.7L13.6 12l1.4 1z"/></svg>
+        <span class="as-txt"><span class="as-big">Google Play</span></span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" data-screen-label="Hero">
+    <div class="halo" data-parallax="0.18"></div>
+    <div class="wrap">
+      <img class="hero__icon reveal" src={a('icon.png')} alt="やること アプリアイコン">
+      <h1 class="reveal d1"><span class="nb">やることを、</span><br><span class="nb">もっとシンプルに。</span></h1>
+      <p class="lead reveal d2"><span class="nb">必要な機能だけを残した、</span><br><span class="nb">心地よいTODOアプリ。</span></p>
+      <div class="cta-row reveal d3">
+        <a class="appstore" href="#cta">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.89-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.88 2.65 3.22 2.6 1.29-.05 1.78-.83 3.34-.83 1.55 0 2 .83 3.37.81 1.39-.03 2.27-1.27 3.12-2.53.98-1.45 1.39-2.85 1.41-2.93-.03-.01-2.7-1.04-2.73-4.13zM14.6 4.62c.71-.86 1.19-2.06 1.06-3.25-1.02.04-2.26.68-2.99 1.54-.66.76-1.23 1.98-1.08 3.15 1.14.09 2.3-.58 3.01-1.44z"/></svg>
+          <span class="as-txt"><span class="as-small">ダウンロード</span><span class="as-big">App Store</span></span>
+        </a>
+        <a class="appstore appstore--alt" href="#cta">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.3 2.6a1 1 0 0 0-.5.9v17a1 1 0 0 0 .5.9l9.2-9.4L4.3 2.6zm10.3 8.1 2.9-3-9.1-5.2 6.2 8.2zm0 2.6-6.2 8.2 9.1-5.2-2.9-3zm1.4-1.3 2.9-1.7c.7-.4.7-1.4 0-1.8l-2.9-1.7L13.6 12l1.4 1z"/></svg>
+          <span class="as-txt"><span class="as-small">ダウンロード</span><span class="as-big">Google Play</span></span>
+        </a>
+        <span class="cta-note"><span class="dot"></span>iOS・Android 近日公開予定</span>
+      </div>
+    </div>
+
+    <div class="hero__stage reveal d2" data-parallax="-0.05">
+      <div class="scene">
+        <div class="scene__glow"></div>
+        <div class="scene__inner">
+
+          <div class="phone phone--left">
+            <div class="device">
+              <div class="device__screen">
+                <div class="device__status">
+                  <span class="device__time">9:41</span>
+                  <svg class="device__sysicons" viewBox="0 0 84 24" fill="#fff" aria-hidden="true"><rect x="0" y="11" width="3.4" height="9" rx="1.1"/><rect x="6" y="8" width="3.4" height="12" rx="1.1"/><rect x="12" y="5" width="3.4" height="15" rx="1.1"/><rect x="18" y="2" width="3.4" height="18" rx="1.1"/><path d="M34 7.5c3.2-2.7 7.8-2.7 11 0M37 11c1.6-1.3 4.4-1.3 6 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="40" cy="15" r="1.6"/><rect x="60" y="5" width="18" height="11" rx="3" fill="none" stroke="#fff" stroke-width="1.6"/><rect x="62" y="7.4" width="12" height="6.2" rx="1.4"/><rect x="79" y="8.4" width="2.4" height="4.2" rx="1.2"/></svg>
+                </div>
+                <div class="device__island"></div>
+                <img src={a('limit.png')} alt="やること の期限ソート画面">
+              </div>
+            </div>
+          </div>
+
+          <div class="phone phone--right">
+            <div class="device">
+              <div class="device__screen">
+                <div class="device__status">
+                  <span class="device__time">9:41</span>
+                  <svg class="device__sysicons" viewBox="0 0 84 24" fill="#fff" aria-hidden="true"><rect x="0" y="11" width="3.4" height="9" rx="1.1"/><rect x="6" y="8" width="3.4" height="12" rx="1.1"/><rect x="12" y="5" width="3.4" height="15" rx="1.1"/><rect x="18" y="2" width="3.4" height="18" rx="1.1"/><path d="M34 7.5c3.2-2.7 7.8-2.7 11 0M37 11c1.6-1.3 4.4-1.3 6 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="40" cy="15" r="1.6"/><rect x="60" y="5" width="18" height="11" rx="3" fill="none" stroke="#fff" stroke-width="1.6"/><rect x="62" y="7.4" width="12" height="6.2" rx="1.4"/><rect x="79" y="8.4" width="2.4" height="4.2" rx="1.2"/></svg>
+                </div>
+                <div class="device__island"></div>
+                <img src={a('edit.png')} alt="やること のタスク編集画面">
+              </div>
+            </div>
+          </div>
+
+          <div class="phone phone--front">
+            <div class="device">
+              <div class="device__screen">
+                <div class="device__status">
+                  <span class="device__time">9:41</span>
+                  <svg class="device__sysicons" viewBox="0 0 84 24" fill="#fff" aria-hidden="true"><rect x="0" y="11" width="3.4" height="9" rx="1.1"/><rect x="6" y="8" width="3.4" height="12" rx="1.1"/><rect x="12" y="5" width="3.4" height="15" rx="1.1"/><rect x="18" y="2" width="3.4" height="18" rx="1.1"/><path d="M34 7.5c3.2-2.7 7.8-2.7 11 0M37 11c1.6-1.3 4.4-1.3 6 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="40" cy="15" r="1.6"/><rect x="60" y="5" width="18" height="11" rx="3" fill="none" stroke="#fff" stroke-width="1.6"/><rect x="62" y="7.4" width="12" height="6.2" rx="1.4"/><rect x="79" y="8.4" width="2.4" height="4.2" rx="1.2"/></svg>
+                </div>
+                <div class="device__island"></div>
+                <img src={a('top.png')} alt="やること のタスク一覧画面">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="chip chip--left"><span class="dot"></span>期限で、すっと整理</div>
+        <div class="chip chip--right"><span class="dot"></span>思いついたら、すぐ記録</div>
+        <div class="chip chip--bottom"><span class="dot"></span>今日やることが、ひと目で</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ SECTION 1 — 追加 ============ -->
+  <section class="section" data-screen-label="思いついたら、すぐ追加。">
+    <div class="wrap feature">
+      <div class="feature__text reveal">
+        <p class="kicker">記録</p>
+        <h2><span class="nb">思いついたら、</span><br><span class="nb">すぐ追加。</span></h2>
+        <p class="lead">頭に浮かんだ、その瞬間に。<br>さっと書き留めるだけ。期限もメモも、必要なときだけ添えれば、それでいい。</p>
+      </div>
+      <div class="feature__media reveal d1">
+        <div class="halo" data-parallax="0.1"></div>
+        <div class="device">
+          <div class="device__screen">
+            <div class="device__status">
+              <span class="device__time">9:41</span>
+              <svg class="device__sysicons" viewBox="0 0 84 24" fill="#fff" aria-hidden="true"><rect x="0" y="11" width="3.4" height="9" rx="1.1"/><rect x="6" y="8" width="3.4" height="12" rx="1.1"/><rect x="12" y="5" width="3.4" height="15" rx="1.1"/><rect x="18" y="2" width="3.4" height="18" rx="1.1"/><path d="M34 7.5c3.2-2.7 7.8-2.7 11 0M37 11c1.6-1.3 4.4-1.3 6 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="40" cy="15" r="1.6"/><rect x="60" y="5" width="18" height="11" rx="3" fill="none" stroke="#fff" stroke-width="1.6"/><rect x="62" y="7.4" width="12" height="6.2" rx="1.4"/><rect x="79" y="8.4" width="2.4" height="4.2" rx="1.2"/></svg>
+            </div>
+            <div class="device__island"></div>
+            <img src={a('edit.png')} alt="やること のタスク編集画面" decoding="async">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2 — 整理 ============ -->
+  <section class="section section--soft" data-screen-label="今日やるべきことが見つかる。">
+    <div class="wrap feature feature--reverse">
+      <div class="feature__text reveal">
+        <p class="kicker">整理</p>
+        <h2><span class="nb">今日やるべきことが、</span><br><span class="nb">見つかる。</span></h2>
+        <p class="lead">期限順に並べれば、いま向き合うことがひと目で分かる。優先順位に悩む時間が、自然となくなっていく。</p>
+      </div>
+      <div class="feature__media reveal d1">
+        <div class="halo" data-parallax="0.1"></div>
+        <div class="device">
+          <div class="device__screen">
+            <div class="device__status">
+              <span class="device__time">9:41</span>
+              <svg class="device__sysicons" viewBox="0 0 84 24" fill="#fff" aria-hidden="true"><rect x="0" y="11" width="3.4" height="9" rx="1.1"/><rect x="6" y="8" width="3.4" height="12" rx="1.1"/><rect x="12" y="5" width="3.4" height="15" rx="1.1"/><rect x="18" y="2" width="3.4" height="18" rx="1.1"/><path d="M34 7.5c3.2-2.7 7.8-2.7 11 0M37 11c1.6-1.3 4.4-1.3 6 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="40" cy="15" r="1.6"/><rect x="60" y="5" width="18" height="11" rx="3" fill="none" stroke="#fff" stroke-width="1.6"/><rect x="62" y="7.4" width="12" height="6.2" rx="1.4"/><rect x="79" y="8.4" width="2.4" height="4.2" rx="1.2"/></svg>
+            </div>
+            <div class="device__island"></div>
+            <img src={a('limit.png')} alt="やること の期限ソート画面" decoding="async">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3 — 達成 ============ -->
+  <section class="section" data-screen-label="終わったら、気持ちよく完了。">
+    <div class="wrap feature">
+      <div class="feature__text reveal">
+        <p class="kicker">達成</p>
+        <h2><span class="nb">終わったら、</span><br><span class="nb">気持ちよく完了。</span></h2>
+        <p class="lead">ひとつ片付けるたび、肩の荷がすっと軽くなる。すべてを終えたあとの画面が、今日のささやかなごほうび。</p>
+      </div>
+      <div class="feature__media reveal d1">
+        <div class="halo" data-parallax="0.1"></div>
+        <div class="device">
+          <div class="device__screen">
+            <div class="device__status">
+              <span class="device__time">9:41</span>
+              <svg class="device__sysicons" viewBox="0 0 84 24" fill="#fff" aria-hidden="true"><rect x="0" y="11" width="3.4" height="9" rx="1.1"/><rect x="6" y="8" width="3.4" height="12" rx="1.1"/><rect x="12" y="5" width="3.4" height="15" rx="1.1"/><rect x="18" y="2" width="3.4" height="18" rx="1.1"/><path d="M34 7.5c3.2-2.7 7.8-2.7 11 0M37 11c1.6-1.3 4.4-1.3 6 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="40" cy="15" r="1.6"/><rect x="60" y="5" width="18" height="11" rx="3" fill="none" stroke="#fff" stroke-width="1.6"/><rect x="62" y="7.4" width="12" height="6.2" rx="1.4"/><rect x="79" y="8.4" width="2.4" height="4.2" rx="1.2"/></svg>
+            </div>
+            <div class="device__island"></div>
+            <img src={a('complete.png')} alt="やること のタスク完了画面" decoding="async">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4 — デザイン ============ -->
+  <section class="section section--soft" data-screen-label="毎日使いたくなるデザイン。">
+    <div class="wrap feature feature--reverse">
+      <div class="feature__text reveal">
+        <p class="kicker">デザイン</p>
+        <h2><span class="nb">毎日使いたくなる、</span><br><span class="nb">デザイン。</span></h2>
+        <p class="lead">静かな配色と、読みやすい余白。ライトでもダークでも、画面がやさしく整う。だから、毎日ひらきたくなる。</p>
+      </div>
+      <div class="feature__media reveal d1">
+        <div class="halo" data-parallax="0.1"></div>
+        <div class="device">
+          <div class="device__screen">
+            <div class="device__status">
+              <span class="device__time">9:41</span>
+              <svg class="device__sysicons" viewBox="0 0 84 24" fill="#fff" aria-hidden="true"><rect x="0" y="11" width="3.4" height="9" rx="1.1"/><rect x="6" y="8" width="3.4" height="12" rx="1.1"/><rect x="12" y="5" width="3.4" height="15" rx="1.1"/><rect x="18" y="2" width="3.4" height="18" rx="1.1"/><path d="M34 7.5c3.2-2.7 7.8-2.7 11 0M37 11c1.6-1.3 4.4-1.3 6 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="40" cy="15" r="1.6"/><rect x="60" y="5" width="18" height="11" rx="3" fill="none" stroke="#fff" stroke-width="1.6"/><rect x="62" y="7.4" width="12" height="6.2" rx="1.4"/><rect x="79" y="8.4" width="2.4" height="4.2" rx="1.2"/></svg>
+            </div>
+            <div class="device__island"></div>
+            <img src={a('top.png')} alt="やること のタスク一覧画面 — 落ち着いた配色" decoding="async">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="final" id="cta" data-screen-label="Final CTA">
+    <div class="halo" data-parallax="0.12"></div>
+    <div class="wrap">
+      <h2 class="reveal">今日の一歩を、<br>もっと軽く。</h2>
+      <p class="lead reveal d1"><span class="nb">やることを、</span><span class="nb">やさしく整える。</span></p>
+      <div class="cta-row reveal d2">
+        <a class="appstore" href="#cta">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.04c-.03-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.89-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.88 2.65 3.22 2.6 1.29-.05 1.78-.83 3.34-.83 1.55 0 2 .83 3.37.81 1.39-.03 2.27-1.27 3.12-2.53.98-1.45 1.39-2.85 1.41-2.93-.03-.01-2.7-1.04-2.73-4.13zM14.6 4.62c.71-.86 1.19-2.06 1.06-3.25-1.02.04-2.26.68-2.99 1.54-.66.76-1.23 1.98-1.08 3.15 1.14.09 2.3-.58 3.01-1.44z"/></svg>
+          <span class="as-txt"><span class="as-small">ダウンロード</span><span class="as-big">App Store</span></span>
+        </a>
+        <a class="appstore appstore--alt" href="#cta">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.3 2.6a1 1 0 0 0-.5.9v17a1 1 0 0 0 .5.9l9.2-9.4L4.3 2.6zm10.3 8.1 2.9-3-9.1-5.2 6.2 8.2zm0 2.6-6.2 8.2 9.1-5.2-2.9-3zm1.4-1.3 2.9-1.7c.7-.4.7-1.4 0-1.8l-2.9-1.7L13.6 12l1.4 1z"/></svg>
+          <span class="as-txt"><span class="as-small">ダウンロード</span><span class="as-big">Google Play</span></span>
+        </a>
+        <span class="cta-note"><span class="dot"></span>iOS・Android 近日公開予定</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div class="brand">
+        <img src={a('icon.png')} alt="">
+        <span>やること</span>
+      </div>
+      <p class="footer__copy">© 2026 RefineFlow Works</p>
+    </div>
+  </footer>
+
+</main>
+
+<script is:inline src={a('script.js')}></script>
+</body>
+</html>
