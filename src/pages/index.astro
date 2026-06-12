@@ -288,17 +288,34 @@ import Layout from '../layouts/Layout.astro';
   .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
   /* ━━ Products ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .products-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+  }
+  @media (max-width: 640px) { .products-grid { grid-template-columns: 1fr; } }
+
   .product-card {
     border-radius: 16px; background: var(--bg-card); border: 1px solid var(--border);
-    padding: 4rem 3rem; text-align: center; position: relative; overflow: hidden;
+    padding: 2.5rem 2rem; text-align: center; position: relative; overflow: hidden;
+    display: flex; flex-direction: column; align-items: center;
   }
   .product-card::before {
     content: ''; position: absolute; inset: 0;
     background: radial-gradient(ellipse 60% 50% at 50% 50%, var(--accent-dim), transparent);
     pointer-events: none;
   }
+  .product-card--app {
+    text-decoration: none; transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .product-card--app:hover {
+    border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+    transform: translateY(-2px);
+  }
+  .product-app-icon {
+    width: 72px; height: 72px; border-radius: 18px; margin-bottom: 1.25rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  }
   .product-dots {
-    display: flex; justify-content: center; gap: 8px; margin-bottom: 2rem;
+    display: flex; justify-content: center; gap: 8px; margin-bottom: 1.5rem;
   }
   .product-dots span {
     width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
@@ -309,19 +326,25 @@ import Layout from '../layouts/Layout.astro';
 
   .product-label {
     font-family: var(--font-mono); font-size: 10px;
-    letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+    letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem;
   }
   .product-title {
-    font-size: 26px; color: var(--fg); margin-bottom: 0.75rem;
+    font-size: 22px; color: var(--fg); margin-bottom: 0.6rem;
     font-family: var(--font-serif); font-weight: 700; letter-spacing: -0.02em;
   }
   .product-desc {
-    font-size: 14px; color: var(--fg-2); line-height: 1.9; margin-bottom: 2rem;
-    max-width: 360px; margin-left: auto; margin-right: auto;
+    font-size: 13px; color: var(--fg-2); line-height: 1.9; margin-bottom: 1.5rem;
+    max-width: 280px; margin-left: auto; margin-right: auto;
+  }
+  .product-link {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
+    color: var(--accent); display: inline-flex; align-items: center; gap: 0.3em;
+    margin-top: auto;
   }
   .product-progress {
-    max-width: 220px; margin: 0 auto; height: 2px;
+    max-width: 180px; margin: 0 auto; height: 2px;
     background: var(--border); border-radius: 9999px; overflow: hidden; position: relative;
+    margin-top: auto;
   }
   .product-progress-bar {
     position: absolute; inset-y: 0; left: 0; width: 60px;
@@ -665,22 +688,42 @@ import Layout from '../layouts/Layout.astro';
       </h2>
     </header>
 
-    <div class="product-card reveal" data-delay="0.1">
-      <div class="product-dots">
-        <span></span><span></span><span></span>
+    <div class="products-grid">
+
+      <!-- やること -->
+      <a class="product-card product-card--app reveal" href="/app/yarukoto/" data-delay="0.1">
+        <img class="product-app-icon" src="/app/yarukoto/icon.png" alt="やること アイコン">
+        <p class="product-label">TODO App</p>
+        <h3 class="product-title">やること</h3>
+        <p class="product-desc">
+          <span class="t-ja">必要な機能だけを残した、心地よいTODOアプリ。やるべきことをシンプルに整理し、自然に次の一歩へ。</span>
+          <span class="t-en">A minimal TODO app focused on what matters. Organize your tasks simply and move forward naturally.</span>
+        </p>
+        <span class="product-link">
+          詳細を見る
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <!-- 開発中 -->
+      <div class="product-card reveal" data-delay="0.2">
+        <div class="product-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <p class="product-label">Coming Soon</p>
+        <h3 class="product-title">
+          <span class="t-ja">開発中</span>
+          <span class="t-en">In Development</span>
+        </h3>
+        <p class="product-desc">
+          <span class="t-ja">次のプロダクトを鋭意開発中です。<br/>リリースをお楽しみに。</span>
+          <span class="t-en">More apps are currently in development.<br/>Stay tuned for upcoming releases.</span>
+        </p>
+        <div class="product-progress">
+          <div class="product-progress-bar"></div>
+        </div>
       </div>
-      <p class="product-label">Coming Soon</p>
-      <h3 class="product-title">
-        <span class="t-ja">現在開発中</span>
-        <span class="t-en">In Development</span>
-      </h3>
-      <p class="product-desc">
-        <span class="t-ja">新しいプロダクトを鋭意開発中です。<br/>リリースをお楽しみに。</span>
-        <span class="t-en">A new product is currently in development.<br/>Stay tuned for the release.</span>
-      </p>
-      <div class="product-progress">
-        <div class="product-progress-bar"></div>
-      </div>
+
     </div>
 
   </div>
