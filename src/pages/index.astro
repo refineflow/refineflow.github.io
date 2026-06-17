@@ -327,14 +327,16 @@ import Layout from '../layouts/Layout.astro';
   .product-label {
     font-family: var(--font-mono); font-size: 10px;
     letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem;
+    width: 100%; text-align: center;
   }
   .product-title {
     font-size: 22px; color: var(--fg); margin-bottom: 0.6rem;
     font-family: var(--font-serif); font-weight: 700; letter-spacing: -0.02em;
+    width: 100%; text-align: center;
   }
   .product-desc {
     font-size: 13px; color: var(--fg-2); line-height: 1.9; margin-bottom: 1.5rem;
-    max-width: 280px; margin-left: auto; margin-right: auto;
+    width: 100%; text-align: center;
   }
   .product-link {
     font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em;
@@ -582,10 +584,6 @@ import Layout from '../layouts/Layout.astro';
         <div class="about-card reveal" data-delay="0.15">
           <p class="about-card-label"><span class="t-ja">事業者名</span><span class="t-en">Business Name</span></p>
           <p class="about-card-value"><strong>RefineFlow Works</strong></p>
-        </div>
-        <div class="about-card reveal" data-delay="0.25">
-          <p class="about-card-label"><span class="t-ja">事業形態</span><span class="t-en">Business Type</span></p>
-          <p class="about-card-value"><span class="t-ja"><strong>個人事業主</strong></span><span class="t-en"><strong>Sole Proprietor</strong></span></p>
         </div>
         <div class="about-card reveal" data-delay="0.35">
           <p class="about-card-label"><span class="t-ja">専門領域</span><span class="t-en">Expertise</span></p>
