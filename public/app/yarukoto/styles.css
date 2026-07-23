@@ -204,13 +204,14 @@ h1, h2, h3 {
 .appstore--alt {
   background: transparent;
   color: var(--text);
-  border: 1px solid var(--line-2);
+  border: 1px solid #fff;
   box-shadow: none;
 }
 .appstore--alt:hover { box-shadow: 0 10px 24px var(--device-shadow); border-color: var(--text-3); }
 .appstore--alt .as-small { opacity: 0.6; }
 
 .cta-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.cta-notes { display: flex; flex-direction: column; gap: 6px; }
 .cta-note {
   font-size: 0.86rem;
   color: var(--text-3);

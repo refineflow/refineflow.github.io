@@ -69,6 +69,18 @@
     }, 300);
   }
 
+  /* ---- Google Play link: open the Play Store app on Android, browser elsewhere ---- */
+  var isAndroid = /Android/i.test(navigator.userAgent);
+  if (isAndroid) {
+    var gplayLinks = Array.prototype.slice.call(document.querySelectorAll('.appstore--alt'));
+    gplayLinks.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.location.href = 'market://details?id=com.refineflow.yarukoto';
+      });
+    });
+  }
+
   /* ---- Gentle parallax ---- */
   var parallaxEls = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
   if (!reduce && parallaxEls.length) {
