@@ -24,6 +24,7 @@ import Layout from '../layouts/Layout.astro';
     font-family: var(--font-mono); font-size: 15px; letter-spacing: -0.01em;
     display: flex; align-items: center; gap: 9px;
   }
+  .nav-logo-icon { flex-shrink: 0; border-radius: 5px; }
   .nav-logo-text {
     font-family: 'Space Grotesk', sans-serif; font-weight: 700;
     letter-spacing: -0.02em;
@@ -435,6 +436,7 @@ import Layout from '../layouts/Layout.astro';
     font-family: var(--font-mono); font-size: 13px;
     display: inline-flex; align-items: center; gap: 7px;
   }
+  .footer-logo-icon { flex-shrink: 0; border-radius: 4px; }
   .footer-logo-text {
     font-family: 'Space Grotesk', sans-serif; font-weight: 700;
     letter-spacing: -0.02em;
@@ -458,17 +460,7 @@ import Layout from '../layouts/Layout.astro';
 <!-- ── Navigation ── -->
 <nav id="nav">
   <a href="/" class="nav-logo">
-    <svg width="22" height="22" viewBox="0 0 128 128" aria-hidden="true" style="flex-shrink:0">
-      <rect width="128" height="128" rx="26" fill="#0d1829"/>
-      <rect x="8" y="24" width="12" height="80" rx="4" fill="#60a5fa"/>
-      <rect x="8" y="24" width="50" height="12" rx="4" fill="#60a5fa"/>
-      <rect x="46" y="24" width="12" height="36" rx="4" fill="#60a5fa"/>
-      <rect x="8" y="48" width="50" height="12" rx="4" fill="#60a5fa"/>
-      <polygon points="36,60 48,60 58,104 46,104" fill="#60a5fa"/>
-      <rect x="68" y="24" width="12" height="80" rx="4" fill="#60a5fa"/>
-      <rect x="68" y="24" width="50" height="12" rx="4" fill="#60a5fa"/>
-      <rect x="68" y="56" width="38" height="12" rx="4" fill="#60a5fa"/>
-    </svg>
+    <img src="/favicon.png" width="22" height="22" alt="" class="nav-logo-icon">
     <span class="nav-logo-text">RefineFlow Works</span>
   </a>
 
@@ -832,17 +824,7 @@ import Layout from '../layouts/Layout.astro';
 <!-- ── Footer ── -->
 <footer id="footer">
   <span class="footer-logo">
-    <svg width="18" height="18" viewBox="0 0 128 128" aria-hidden="true" style="flex-shrink:0">
-      <rect width="128" height="128" rx="26" fill="#0d1829"/>
-      <rect x="8" y="24" width="12" height="80" rx="4" fill="#60a5fa"/>
-      <rect x="8" y="24" width="50" height="12" rx="4" fill="#60a5fa"/>
-      <rect x="46" y="24" width="12" height="36" rx="4" fill="#60a5fa"/>
-      <rect x="8" y="48" width="50" height="12" rx="4" fill="#60a5fa"/>
-      <polygon points="36,60 48,60 58,104 46,104" fill="#60a5fa"/>
-      <rect x="68" y="24" width="12" height="80" rx="4" fill="#60a5fa"/>
-      <rect x="68" y="24" width="50" height="12" rx="4" fill="#60a5fa"/>
-      <rect x="68" y="56" width="38" height="12" rx="4" fill="#60a5fa"/>
-    </svg>
+    <img src="/favicon.png" width="18" height="18" alt="" class="footer-logo-icon">
     <span class="footer-logo-text">RefineFlow Works</span>
   </span>
   <span class="footer-copy">&copy; 2026 RefineFlow Works All rights reserved.</span>
